@@ -31,11 +31,10 @@ This web app is designed to recursively list uniquely named files and their occu
 
 ## Build and Run
 
-To set up and run the File Lister Application:
-
-1. Run the setup script to build and start the application instances:
+1. Use the following commands to build and run the application:
    ```bash
-   ./setup.sh
+   make build
+   make run
    ```
 2. Access the application in your web browser:
    - Swagger UI: http://localhost:8081
