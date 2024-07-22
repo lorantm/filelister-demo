@@ -1,5 +1,5 @@
 FROM docker.io/library/openjdk:17-oracle
-ENV DB_URL jdbc:postgresql://host.containers.internal:5432/postgres
+ENV DB_URL jdbc:postgresql://postgresql:5432/postgres
 ENV DB_USERNAME postgres
 ENV DB_PASSWORD postgres
 WORKDIR /app
