@@ -19,8 +19,6 @@ remove-app:
 	fi
 
 build-app:
-	echo "Building application..."
-	mvn clean package -DskipTests || echo "Maven build failed."
 	echo "Creating Docker image..."
 	podman build -t filelister . || echo "Podman build failed."
 
