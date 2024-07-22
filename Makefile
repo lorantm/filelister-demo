@@ -26,8 +26,8 @@ build-app:
 
 start-app:
 	echo "Starting app containers..."
-	podman run -d --network filelister --name app1 -p 8081:8080 filelister || echo "Failed to start container 'app1 '."
-	podman run -d --network filelister --name app2 -p 8082:8080 filelister || echo "Failed to start container 'app2'."
+	podman run -d --network filelister --user user1 --name app1 -p 8081:8080 filelister || echo "Failed to start container 'app1 '."
+	podman run -d --network filelister --user user2 --name app2 -p 8082:8080 filelister || echo "Failed to start container 'app2'."
 
 start-db:
 	if podman ps -a --format "{{.Names}}" | grep -q "^postgresql$$"; then \

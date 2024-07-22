@@ -1,4 +1,6 @@
 FROM docker.io/library/openjdk:17-oracle
+RUN groupadd -r user1 && useradd -r -g user1 user1
+RUN groupadd -r user2 && useradd -r -g user2 user2
 ENV DB_URL jdbc:postgresql://postgresql:5432/postgres
 ENV DB_USERNAME postgres
 ENV DB_PASSWORD postgres
