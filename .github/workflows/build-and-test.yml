@@ -12,7 +12,5 @@ jobs:
       with:
         distribution: 'oracle'
         java-version: '17'
-    - name: Maven package
-      run: mvn clean package -DskipTests
-    - name: Run tests
-      run: mvn test
+    - name: Gradle build
+      run: gradle clean build
