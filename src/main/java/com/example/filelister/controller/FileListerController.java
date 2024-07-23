@@ -1,4 +1,4 @@
-package com.example.filelister.rest;
+package com.example.filelister.controller;
 
 import java.util.Map;
 
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.filelister.UniqueFileLister;
-import com.example.filelister.history.HistoryEntry;
-import com.example.filelister.history.HistoryRepository;
+import com.example.filelister.dto.HistoryDTO;
+import com.example.filelister.service.HistoryService;
+import com.example.filelister.service.UniqueFileListerService;
 
 /**
  * Spring REST controller that lists unique files in a specified directory with a
@@ -19,10 +19,10 @@ import com.example.filelister.history.HistoryRepository;
 public class FileListerController {
 
     @Autowired
-    private UniqueFileLister uniqueFileLister;
+    private UniqueFileListerService uniqueFileLister;
 
     @Autowired 
-    private HistoryRepository historyRepository;
+    private HistoryService historyService;
 
     /**
      * Retrieves unique file names and their occurrences in a specified directory and extension.
@@ -37,13 +37,7 @@ public class FileListerController {
     @GetMapping("/get_unique_files")
     public Map<String, Integer> getUniqueFiles(@RequestParam(value = "dir", defaultValue = "/tmp") String dir,
     @RequestParam(value = "ext", defaultValue = "txt") String ext) {
-        HistoryEntry e = new HistoryEntry();
-        e.setTimestamp(System.currentTimeMillis());
-        e.setUsername(System.getProperty("user.name"));
-        e.setDirectory(dir);
-        e.setExtension(ext);
-        historyRepository.save(e);
-
+        historyService.addHistory(new HistoryDTO(System.currentTimeMillis(), System.getProperty("user.name"), dir, ext));
         return uniqueFileLister.getFileNamesAndOccurrences(dir, ext);
     }
 }

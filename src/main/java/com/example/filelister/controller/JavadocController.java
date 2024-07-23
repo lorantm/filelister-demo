@@ -1,4 +1,4 @@
-package com.example.filelister.rest;
+package com.example.filelister.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

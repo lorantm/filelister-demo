@@ -1,7 +1,7 @@
 FROM docker.io/library/openjdk:17-oracle AS build
 WORKDIR /build
 COPY . .
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package
 
 FROM docker.io/library/openjdk:17-oracle
 RUN groupadd -r user1 && useradd -r -g user1 user1

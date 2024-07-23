@@ -1,4 +1,4 @@
-package com.example.filelister;
+package com.example.filelister.service;
 
 import java.io.File;
 import java.util.Map;
@@ -6,15 +6,15 @@ import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * Implements core file listing functionality.
  */
-@Component
-public class UniqueFileLister {
+@Service
+public class UniqueFileListerService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UniqueFileLister.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UniqueFileListerService.class);
 
     /**
      * Lists files in a directory with a specific extension and returns a map of file names and their occurrences.

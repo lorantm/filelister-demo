@@ -1,4 +1,4 @@
-package com.example.filelister.history;
+package com.example.filelister.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -7,11 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * Data class that represents an entry in the file query history database.
+ * Entity that represents an entry in the file query history database.
  */
 @Entity
 @Table(name = "history")
-public class HistoryEntry {
+public class HistoryEntity {
 
     @Id
     @GeneratedValue
@@ -28,6 +28,15 @@ public class HistoryEntry {
 
     @Column(name = "extension", nullable = false)
     private String extension;
+
+    public HistoryEntity() {}
+
+    public HistoryEntity(long timestamp, String username, String directory, String extension) {
+        this.timestamp = timestamp;
+        this.username = username;
+        this.directory = directory;
+        this.extension = extension;
+    }
 
     /**
      * Returns the unix timestamp of the query.
@@ -63,41 +72,5 @@ public class HistoryEntry {
      */
     public String getExtension() {
         return extension;
-    }
-
-    /**
-     * Sets the unix the timestamp of the query.
-     * 
-     * @param timestamp The unix timestamp of the query.
-     */
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    /**
-     * Sets the name of the user who performed the query.
-     * 
-     * @param username The name of the user who performed the query.
-     */
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    /**
-     * Sets the queried directory.
-     * 
-     * @param directory The queried directory.
-     */
-    public void setDirectory(String directory) {
-        this.directory = directory;
-    }
-
-    /**
-     * Sets the queried file extension.
-     * 
-     * @param extension The queried file extension.
-     */
-    public void setExtension(String extension) {
-        this.extension = extension;
     }
 }

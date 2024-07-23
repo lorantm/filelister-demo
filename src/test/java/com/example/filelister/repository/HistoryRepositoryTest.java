@@ -1,8 +1,11 @@
-package com.example.filelister.history;
+package com.example.filelister.repository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import com.example.filelister.entity.HistoryEntity;
+
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,17 +22,12 @@ public class HistoryRepositoryTest {
 
     @Test
     void testSaveAndRetrieveHistoryEntry() {
-        HistoryEntry entry = new HistoryEntry();
-
         long now = System.currentTimeMillis();
-        entry.setTimestamp(now);
-        entry.setUsername("testuser");
-        entry.setDirectory("/test/path");
-        entry.setExtension(".txt");
+        HistoryEntity entry = new HistoryEntity(now, "testuser", "/test/path", ".txt");
 
         historyRepository.save(entry);
 
-        List<HistoryEntry> entries = historyRepository.findAll();
+        List<HistoryEntity> entries = historyRepository.findAll();
         assertThat(entries).hasSize(1);
         assertEquals(entries.get(0).getTimestamp(), now);
         assertEquals(entries.get(0).getUsername(), "testuser");
