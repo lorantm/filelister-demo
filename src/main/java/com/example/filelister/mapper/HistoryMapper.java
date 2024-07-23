@@ -5,6 +5,9 @@ import org.springframework.stereotype.Component;
 import com.example.filelister.dto.HistoryDTO;
 import com.example.filelister.entity.HistoryEntity;
 
+/**
+ * Responsible for conversion between HistoryEntity and HistoryDTO types.
+ */
 @Component
 public class HistoryMapper {
     /**

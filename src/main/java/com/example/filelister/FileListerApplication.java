@@ -11,6 +11,7 @@ public class FileListerApplication {
 
     /**
      * Main method.
+     * @param args arguments
      */
     public static void main(String[] args) {
         SpringApplication.run(FileListerApplication.class, args);

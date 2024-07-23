@@ -9,8 +9,18 @@ public class HistoryDTO {
     private String directory;
     private String extension;
 
+    /**
+     * Default constructor.
+     */
     public HistoryDTO() {}
 
+    /**
+     * Parameterized constructor.
+     * @param timestamp Unix timestamp of the query.
+     * @param username Name of the user who performed the query.
+     * @param directory Directory from which the files were queried.
+     * @param extension Extension of the queried files.
+     */
     public HistoryDTO(long timestamp, String username, String directory, String extension) {
         this.timestamp = timestamp;
         this.username = username;
